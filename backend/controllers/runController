@@ -1,0 +1,40 @@
+const asyncHandler = require('express-async-handler');
+
+//@desc get runs
+//@route GET /api/runs
+//@access Private
+const getRuns = asyncHandler(async (req, res) => {
+    res.status(200).json({message: "get runs"})
+})
+
+//@desc set run
+//@route POST /api/runs
+//@access Private
+const setRun = asyncHandler(async(req, res) => {
+    if(!req.body.text){
+        res.status(400)
+        throw new Error('Please add a text field')
+    }
+    res.status(200).json({message: 'set run'})
+})
+
+//@desc update run
+//@route PUT /api/runs/:id
+//@access Private
+const updateRun = asyncHandler(async(req, res) => {
+    res.status(200).json({message: `update run ${req.params.id}`})
+})
+
+//@desc delete run
+//@route DELETE /api/runs/:id
+//@access Private
+const deleteRun = asyncHandler(async(req, res) => {
+    res.status(200).json({message: `delete run ${req.params.id}`})
+})
+
+module.exports = {
+    getRuns,
+    setRun,
+    updateRun,
+    deleteRun
+}
