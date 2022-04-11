@@ -10,8 +10,9 @@ const runSchema = mongoose.Schema({
         required: [true, 'Please add the date of your run']
     },
     user: {
-        type: String,
-        required: [true, 'I know who you are :D']
+        type: mongoose.Schema.Types.ObjectId,
+        required: [true, 'I know who you are :D'],
+        ref: 'User'
     }
 }, {
     timestamps: true

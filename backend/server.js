@@ -15,6 +15,7 @@ app.use(express.urlencoded({extended: false}))
 // middlewareEnd
 
 app.use('/api/runs', require('./routes/runRoutes'))
+app.use('/api/users', require('./routes/userRoutes'))
 
 app.use(errorHandler)
 
