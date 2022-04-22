@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
+// createRoot(
   <React.StrictMode>
     <Provider store={store}>
       <App />

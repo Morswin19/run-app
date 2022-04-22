@@ -43,16 +43,14 @@ const updateRun = asyncHandler(async(req, res) => {
         throw new Error('Run not found')
     }
 
-    const user = await User.findById(req.user.id)
-
     // check for user
-    if(!user){
+    if(!req.user){
         res.status(401)
         throw new Error('User not found')
     }
 
     //make sure the logged in user matches the run user
-    if(run.user.toString() !== user.id){
+    if(run.user.toString() !== req.user.id){
         res.status(401)
         throw new Error('User not authorized')
     }
@@ -75,16 +73,14 @@ const deleteRun = asyncHandler(async(req, res) => {
         throw new Error('Run not found')
     }
 
-    const user = await User.findById(req.user.id)
-
     // check for user
-    if(!user){
+    if(!req.user){
         res.status(401)
         throw new Error('User not found')
     }
 
     //make sure the logged in user matches the run user
-    if(run.user.toString() !== user.id){
+    if(run.user.toString() !== req.user.id){
         res.status(401)
         throw new Error('User not authorized')
     }
