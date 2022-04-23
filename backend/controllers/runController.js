@@ -21,7 +21,7 @@ const setRun = asyncHandler(async(req, res) => {
         throw new Error('Please add a text field')
     }
 
-    let dateDay = new Date()
+    // let dateDay = new Date()
 
     const run = await Run.create({
         length: req.body.length,

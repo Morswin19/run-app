@@ -17,12 +17,12 @@ const RunForm = () => {
         setDate('')
     }
 
-    return ( 
+    return (
         <section className="form">
             <form onSubmit={onSubmit}>
                 <div className="form-group">
                     <label htmlFor="length">Run</label>
-                    <input placeholder="gimme no shelter" type="number" name='length' id="length" value={length} onChange={(e) => setLength(e.target.value)}/>
+                    <input placeholder="run length" type="number" name='length' id="length" value={length} onChange={(e) => setLength(e.target.value)}/>
                 </div>
                 <div className="form-group">
                     <label htmlFor="date">Date</label>
