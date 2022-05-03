@@ -10,7 +10,6 @@ const GoalForm = () => {
 
     const onSubmit = e => {
         e.preventDefault()
-        console.log('submit from goalForm')
         dispatch(createGoal({amount}))
         setAmount('')
     }
@@ -23,7 +22,7 @@ const GoalForm = () => {
                     <input placeholder="goal amount" type="number" name='amount' id="amount" value={amount} onChange={(e) => setAmount(e.target.value)}/>
                 </div>
                 <div className="form-group">
-                    <button className="btn btn-block" type='submit'>Add year goal</button>
+                    <button className="btn btn-block" type='submit'>Add year goal (km)</button>
                 </div>
             </form>
         </section>

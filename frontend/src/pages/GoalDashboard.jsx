@@ -1,20 +1,19 @@
 import React, { useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
-import RunForm from '../components/RunForm'
+import GoalForm from '../components/GoalForm'
 import Spinner from '../components/Spinner'
-import RunItem from '../components/RunItem'
+import GoalItem from '../components/GoalItem'
 import Distances from '../components/Distances'
-import YearsDistance from '../components/YearsDistance'
 import { getRuns, reset } from '../features/runs/runSlice'
 import { getGoals, goalReset } from '../features/goals/goalSlice'
 
-const Dashboard = () => {
+const GoalDashboard = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
     const { user } = useSelector((state) => state.auth)
-    const { runs, isLoading, isError, message} = useSelector((state) => state.runs)
+    const { runs, isLoading, isError, message } = useSelector((state) => state.runs)
     const { goals } = useSelector((state) => state.goals )
 
     useEffect(() => {
@@ -42,29 +41,31 @@ const Dashboard = () => {
         <>
             <section className="heading">
                 <h1>Welcome {user && user.name}</h1>
-                <div className="numbers runNumbers">
+                <div className="numbers goalNumbers">
                     <Distances goals={goals} runs={runs}/>
                 </div>
             </section>
-            <RunForm />
             <section className="content">
                 {runs.length > 0
                 ?
                 (
-                    <div className="runs">
-                        {runs.map(run => (
-                            <RunItem key={run._id} run={run}/>
+                    <div className="goals">
+                        {goals.map(goal => (
+                            <GoalItem key={goal._id} goal={goal} runs={runs}/>
                         ))}
                     </div>
                 )
                 :
-                (<h3>You do not have runs</h3>)}
+                (<h3>You do not have goals</h3>)}
             </section>
-            <section>
-                <YearsDistance />
-            </section>
+            {goals.length > 0
+            ?
+            <h3 className="content">You can only have one year goal. If you want to set new, please delete the exist one</h3>
+            :
+            <GoalForm />
+            }
         </>
      );
 }
  
-export default Dashboard;
+export default GoalDashboard;

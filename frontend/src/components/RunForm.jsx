@@ -29,7 +29,7 @@ const RunForm = () => {
                     <input type="date" name='date' id="date" value={date} onChange={(e) => setDate(e.target.value)}/>
                 </div>
                 <div className="form-group">
-                    <button className="btn btn-block" type='submit'>Add run</button>
+                    <button className="btn btn-block" type='submit'>Add run (km)</button>
                 </div>
             </form>
         </section>

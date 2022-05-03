@@ -78,7 +78,7 @@ h3 {
 .heading {
   font-size: 2rem;
   font-weight: 700;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
   padding: 0 20px;
 }
 
@@ -87,7 +87,7 @@ h3 {
   font-size: 1.5rem
 }
 
-.runs {
+.runs, .years {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
@@ -95,7 +95,7 @@ h3 {
 
 .goal {
   background-color: #f4f4f4;
-  margin: 10px 0;
+  margin: 5px 0;
   padding: 20px 0 10px;
   position: relative;
 }
@@ -202,20 +202,6 @@ h3 {
   }
 }
 
-@media (max-width: 600px) {
-  .form {
-    width: 90%;
-  }
-
-  .heading h1 {
-    font-size: 2rem;
-  }
-
-  .heading p {
-    font-size: 1.5rem;
-  }
-}
-
 .goalStripe {
   margin: 30px 0 50px;
   position: relative;
@@ -246,30 +232,52 @@ h3 {
   left: 100%
 }
 
-.numbers {
+.distances {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   gap: 20px;
-  max-width: 70%;
+  width: 70%;
   margin: auto
 }
 
 .deleteBtn {
   background: black;
   border: 0px solid;
-  width: 30px;
-  height: 30px;
   color: white;
   font-weight: 900;
   font-size: 1rem;
-  border-radius: 50%;
   cursor: pointer;
   transition: 0.2s;
+  padding: 10px 20px;
 }
 
 .deleteBtn:hover {
-  width: 40px;
-  height: 40px;
-  font-size: 2rem
+  border-radius: 10px;
+}
+
+.logo a {
+  margin: 0 20px 0 0;
+}
+
+.runNumbers button {
+  display: none
+}
+
+.yearsDistance {
+  margin-top: 20px
+}
+
+@media (max-width: 600px) {
+  .form, .content, .distances {
+    width: 90%;
+  }
+
+  .heading h1 {
+    font-size: 2rem;
+  }
+
+  .heading p {
+    font-size: 1rem;
+  }
 }

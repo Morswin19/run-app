@@ -13,7 +13,7 @@ const RunItem = ({run}) => {
     return ( 
         <div className="goal">
             <div>{runYear}-{runMonth}-{runDay}</div>
-            <h2>{run.length}</h2>
+            <h2>{run.length} km</h2>
             <button onClick={() => dispatch(deleteRun(run._id))} className="close">X</button>
         </div>
      );
