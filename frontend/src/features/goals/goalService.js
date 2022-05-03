@@ -1,22 +1,22 @@
 import axios from 'axios'
 
-const API_URL = '/api/runs/'
+const API_URL = '/api/goals/'
 
-//create new run
-const createRun = async (runData, token) => {
+//create new goal
+const createGoal = async (goalData, token) => {
     const config = {
         headers: {
             Authorization: `Bearer ${token}`
         }
     }
 
-    const response = await axios.post(API_URL, runData, config)
+    const response = await axios.post(API_URL, goalData, config)
 
     return response.data
 }
 
 // get user runs
-const getRuns = async (token) => {
+const getGoals = async (token) => {
     const config = {
         headers: {
             Authorization: `Bearer ${token}`
@@ -28,24 +28,23 @@ const getRuns = async (token) => {
     return response.data
 }
 
-// delete run
-const deleteRun = async (runId, token) => {
+// delete goal
+const deleteGoal = async (goalId, token) => {
     const config = {
         headers: {
             Authorization: `Bearer ${token}`
         }
     }
 
-    const response = await axios.delete(API_URL + `${runId}`, config)
-    console.log('hello guinea from delete run from run service')
+    const response = await axios.delete(API_URL + `${goalId}`, config)
 
     return response.data
 }
 
-const runService = {
-    createRun,
-    getRuns,
-    deleteRun
+const goalService = {
+    createGoal,
+    getGoals,
+    deleteGoal
 }
 
-export default runService
+export default goalService

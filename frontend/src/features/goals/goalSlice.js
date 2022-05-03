@@ -1,96 +1,90 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
-import runService from './runService'
+import goalService from './goalService'
 
 const initialState = {
-    runs: [],
+    goals: [],
     isError: false,
     isSuccess: false,
     isLoading: false,
     message: '',
-    runsDistance: 0
 }
 
-//create new run
-export const createRun = createAsyncThunk('runs/create', async(runData, thunkAPI) => {
+//create new goal
+export const createGoal = createAsyncThunk('goals/create', async(goalData, thunkAPI) => {
     try {
         const token = thunkAPI.getState().auth.user.token
-        return await runService.createRun(runData, token)
+        return await goalService.createGoal(goalData, token)
     } catch (error){
         const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
         return thunkAPI.rejectWithValue(message)
     }
 })
 
-//get user runs
-export const getRuns = createAsyncThunk('runs/getAll', async(_, thunkAPI) => {
+//get user goals
+export const getGoals = createAsyncThunk('goals/getAll', async(_, thunkAPI) => {
     try {
         const token = thunkAPI.getState().auth.user.token
-        return await runService.getRuns(token)
+        return await goalService.getGoals(token)
     } catch (error){
         const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
         return thunkAPI.rejectWithValue(message)
     }
 })
 
-
-// delete user run
-export const deleteRun = createAsyncThunk('runs/delete', async(id, thunkAPI) => {
+// delete user goal
+export const deleteGoal = createAsyncThunk('goals/delete', async(id, thunkAPI) => {
     try {
         const token = thunkAPI.getState().auth.user.token
-        return await runService.deleteRun(id, token)
+        return await goalService.deleteGoal(id, token)
     } catch (error){
         const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
         return thunkAPI.rejectWithValue(message)
     }
 })
 
-export const runSlice = createSlice({
-    name: 'run',
+export const goalSlice = createSlice({
+    name: 'goal',
     initialState,
     reducers: {
-        reset: (state) => initialState
+        goalReset: (state) => initialState
     },
     extraReducers: (builder) => {
         builder
-            .addCase(createRun.pending, (state) => {
+            .addCase(createGoal.pending, (state) => {
                 state.isLoading = true
             })
-            .addCase(createRun.fulfilled, (state, action) => {
+            .addCase(createGoal.fulfilled, (state, action) => {
                 state.isLoading = false
                 state.isSuccess = true
-                state.runs.push(action.payload)
-                state.runsDistance = state.runs.map(item => item.length).reduce((a, b) => a + b, 0)
+                state.goals.push(action.payload)
             })
-            .addCase(createRun.rejected, (state, action) => {
+            .addCase(createGoal.rejected, (state, action) => {
                 state.isLoading = false
                 state.isError = true
                 state.message = action.payload
             })
-            .addCase(getRuns.pending, (state) => {
+            .addCase(getGoals.pending, (state) => {
                 state.isLoading = true
             })
-            .addCase(getRuns.fulfilled, (state, action) => {
+            .addCase(getGoals.fulfilled, (state, action) => {
                 state.isLoading = false
                 state.isSuccess = true
-                state.runs = action.payload
-                // state.runsDistance = action.payload.map(item => item.length).reduce((a, b) => a + b, 0)
-                state.runsDistance = state.runs.map(item => item.length).reduce((a, b) => a + b, 0)
+                state.goals = action.payload
             })
-            .addCase(getRuns.rejected, (state, action) => {
+            .addCase(getGoals.rejected, (state, action) => {
                 state.isLoading = false
                 state.isError = true
                 state.message = action.payload
             })
-            .addCase(deleteRun.pending, (state) => {
+            .addCase(deleteGoal.pending, (state) => {
                 state.isLoading = true
             })
-            .addCase(deleteRun.fulfilled, (state, action) => {
+            .addCase(deleteGoal.fulfilled, (state, action) => {
                 state.isLoading = false
                 state.isSuccess = true
-                state.runs = state.runs.filter((run) => run._id !== action.payload.id)
-                state.runsDistance = state.runs.map(item => item.length).reduce((a, b) => a + b, 0)
+                state.goals = state.goals.filter((goal) => goal._id !== action.payload.id)
             })
-            .addCase(deleteRun.rejected, (state, action) => {
+            .addCase(deleteGoal.rejected, (state, action) => {
                 state.isLoading = false
                 state.isError = true
                 state.message = action.payload
@@ -98,5 +92,5 @@ export const runSlice = createSlice({
     }
 })
 
-export const {reset} = runSlice.actions
-export default runSlice.reducer
+export const {goalReset} = goalSlice.actions
+export default goalSlice.reducer

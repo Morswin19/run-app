@@ -18,7 +18,7 @@ const getRuns = asyncHandler(async (req, res) => {
 const setRun = asyncHandler(async(req, res) => {
     if(!req.body.length){
         res.status(400)
-        throw new Error('Please add a text field')
+        throw new Error('Please add a length of your run')
     }
 
     // let dateDay = new Date()
