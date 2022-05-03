@@ -37,7 +37,6 @@ const deleteRun = async (runId, token) => {
     }
 
     const response = await axios.delete(API_URL + `${runId}`, config)
-    console.log('hello guinea from delete run from run service')
 
     return response.data
 }

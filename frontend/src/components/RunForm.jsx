@@ -11,7 +11,6 @@ const RunForm = () => {
 
     const onSubmit = e => {
         e.preventDefault()
-        console.log('submit from runForm')
         dispatch(createRun({length, date}))
         setLength('')
         setDate('')
