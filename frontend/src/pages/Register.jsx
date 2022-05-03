@@ -124,5 +124,3 @@ function Register(){
 };
 
 export default Register;
-
-// skończyłem na 59 minucie, wcześniej była 37 minuta

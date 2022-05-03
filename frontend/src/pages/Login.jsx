@@ -53,7 +53,7 @@ function Login(){
   if(isLoading){
     return <Spinner />
   }
-  
+
   return (
     <>
       <section className="heading">

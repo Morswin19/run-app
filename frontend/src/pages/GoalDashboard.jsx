@@ -60,7 +60,7 @@ const GoalDashboard = () => {
             </section>
             {goals.length > 0
             ?
-            <h3 className="content">You can only have one year goal. If you want to set new, please delete the exist one</h3>
+            <h3 className="content">You can only have one year goal. If you want to set new, please delete the existing one</h3>
             :
             <GoalForm />
             }

@@ -37,5 +37,5 @@ const YearsDistance = () => {
         </div>
      );
 }
- 
+
 export default YearsDistance;
