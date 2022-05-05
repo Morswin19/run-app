@@ -14,7 +14,7 @@ const Dashboard = () => {
     const dispatch = useDispatch()
 
     const { user } = useSelector((state) => state.auth)
-    const { runs, isLoading, isError, message} = useSelector((state) => state.runs)
+    const { runs, runsSortByDate, isLoading, isError, message} = useSelector((state) => state.runs)
     const { goals } = useSelector((state) => state.goals )
 
     useEffect(() => {
@@ -43,7 +43,7 @@ const Dashboard = () => {
             <section className="heading">
                 <h1>Welcome {user && user.name}</h1>
                 <div className="numbers runNumbers">
-                    <Distances goals={goals} runs={runs}/>
+                    <Distances goals={goals} runs={runsSortByDate}/>
                 </div>
             </section>
             <RunForm />

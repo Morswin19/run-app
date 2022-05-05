@@ -7,7 +7,8 @@ const initialState = {
     isSuccess: false,
     isLoading: false,
     message: '',
-    runsDistance: 0
+    runsDistance: 0,
+    runsSortByDate: []
 }
 
 //create new run
@@ -60,6 +61,9 @@ export const runSlice = createSlice({
                 state.isSuccess = true
                 state.runs.push(action.payload)
                 state.runsDistance = state.runs.map(item => item.length).reduce((a, b) => a + b, 0)
+                state.runsSortByDate = state.runs.sort((a,b) => (a.date > b.date))
+                state.runsSortByDate = state.runs.sort((a,b) => a.date > b.date ? -1 : a.date < b.date ? 1 : 0)
+
             })
             .addCase(createRun.rejected, (state, action) => {
                 state.isLoading = false
@@ -73,8 +77,8 @@ export const runSlice = createSlice({
                 state.isLoading = false
                 state.isSuccess = true
                 state.runs = action.payload
-                // state.runsDistance = action.payload.map(item => item.length).reduce((a, b) => a + b, 0)
                 state.runsDistance = state.runs.map(item => item.length).reduce((a, b) => a + b, 0)
+                state.runsSortByDate = state.runs.sort((a,b) => a.date > b.date ? -1 : a.date < b.date ? 1 : 0)
             })
             .addCase(getRuns.rejected, (state, action) => {
                 state.isLoading = false
@@ -89,6 +93,19 @@ export const runSlice = createSlice({
                 state.isSuccess = true
                 state.runs = state.runs.filter((run) => run._id !== action.payload.id)
                 state.runsDistance = state.runs.map(item => item.length).reduce((a, b) => a + b, 0)
+                state.runsSortByDate = state.runs.sort((a,b) => a.date > b.date ? -1 : a.date < b.date ? 1 : 0)
+                // 
+
+                // if ( a.last_nom < b.last_nom ){
+                //     return -1;
+                //   }
+                //   if ( a.last_nom > b.last_nom ){
+                //     return 1;
+                //   }
+                //   return 0;
+
+
+                // 
             })
             .addCase(deleteRun.rejected, (state, action) => {
                 state.isLoading = false

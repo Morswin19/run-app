@@ -14,8 +14,20 @@ const GoalItem = ({goal, runs}) => {
         return run
     })
 
+    // get start/end dates and percent of year to come
+    const endYearDate = new Date(`${year}-12-31`)
+    const startYearDate = new Date(`${year}-01-01`)
+    const percentOfTheYearGone = Math.round(((date.getTime() - startYearDate.getTime()) * 100 / (endYearDate.getTime() - startYearDate.getTime())))
+    const markerLeftYear = percentOfTheYearGone + '%'
+
+    // styles for year runner marker
+    const yearCompleteStyle = {
+        left: markerLeftYear
+    }
+
     const yearsWithDistance = runYears.map((year) => {
-        const actualYearRuns = runs.filter(run => run.date.includes(`${year}-`));
+        const actualYearRuns = runs.filter(run => run.date.includes(`${year}-`) && run.date > new Date(`${year}-${date.getMonth() + 1}-${date.getDate()}`));
+        console.log(new Date(`${year}-${date.getMonth() + 1}-${date.getDate()}`))
         let actualYearDistance = 0;
         let calculateGoalComplete = 0;
 
@@ -33,16 +45,6 @@ const GoalItem = ({goal, runs}) => {
     });
 
     const pastYearsDistance = yearsWithDistance.slice(1)
-
-    // get start/end dates and percent of year to come
-    const endYearDate = new Date(`${year}-12-31`)
-    const startYearDate = new Date(`${year}-01-01`)
-    const markerLeftYear = Math.round(((date.getTime() - startYearDate.getTime()) * 100 / (endYearDate.getTime() - startYearDate.getTime()))) + '%'
-
-    // styles for year runner marker
-    const yearCompleteStyle = {
-        left: markerLeftYear
-    }
 
     return (
         <div className="goalItem">

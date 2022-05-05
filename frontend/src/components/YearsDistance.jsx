@@ -2,11 +2,11 @@ import React from 'react';
 import { useSelector } from 'react-redux'
 
 const YearsDistance = () => {
-    const { runs } = useSelector((state) => state.runs)
+    const { runsSortByDate } = useSelector((state) => state.runs)
 
     const runYears = [];
 
-    runs.map(run => {
+    runsSortByDate.map(run => {
         const date = new Date(run.date)
         const year = date.getFullYear()
         !runYears.includes(year) && runYears.push(year)
@@ -14,7 +14,7 @@ const YearsDistance = () => {
     })
 
     const yearsWithDistance = runYears.map((year) => {
-        const actualYearRuns = runs.filter(run => run.date.includes(`${year}-`));
+        const actualYearRuns = runsSortByDate.filter(run => run.date.includes(`${year}-`));
         let actualYearDistance = 0;
 
         for(let i = 0; i < actualYearRuns.length; i++){
