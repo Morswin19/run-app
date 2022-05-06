@@ -1,6 +1,6 @@
 import React from "react";
 import { FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../features/auth/authSlice";
 
@@ -18,8 +18,8 @@ const Header = () => {
   return (
     <header className="header">
       <div className="logo">
-        <Link to="/">Runs</Link>
-        <Link to="/goal">Goal</Link>
+        <NavLink to="/">Runs</NavLink>
+        <NavLink to="/goal">Goal</NavLink>
       </div>
       <ul>
         {user ? (
@@ -31,14 +31,14 @@ const Header = () => {
         ) : (
           <>
             <li>
-              <Link to="/login">
+              <NavLink to="/login">
                 <FaSignInAlt /> login
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link to="/register">
+              <NavLink to="/register">
                 <FaUser /> Register
-              </Link>
+              </NavLink>
             </li>
           </>
         )}

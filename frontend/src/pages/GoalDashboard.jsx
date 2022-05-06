@@ -38,7 +38,7 @@ const GoalDashboard = () => {
     }
 
     return (
-        <>
+        <div className="goalDashboard">
             <section className="heading">
                 <h1>Welcome {user && user.name}</h1>
                 <div className="numbers goalNumbers">
@@ -60,11 +60,11 @@ const GoalDashboard = () => {
             </section>
             {goals.length > 0
             ?
-            <h3 className="content">You can only have one year goal. If you want to set new, please delete the existing one</h3>
+            <h3 className="content noGoal">You can only have one year goal. If you want to set new, please delete the existing one</h3>
             :
             <GoalForm />
             }
-        </>
+        </div>
      );
 }
  

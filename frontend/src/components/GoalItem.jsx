@@ -4,6 +4,7 @@ import runner from '../assets/runner.png'
 const GoalItem = ({goal, runs}) => {
     const date = new Date()
     const year = date.getFullYear()
+    const monthName = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'November', 'December']
 
     const runYears = [];
 
@@ -25,9 +26,19 @@ const GoalItem = ({goal, runs}) => {
         left: markerLeftYear
     }
 
+    // calculate the distance of each year
     const yearsWithDistance = runYears.map((year) => {
-        const actualYearRuns = runs.filter(run => run.date.includes(`${year}-`) && run.date > new Date(`${year}-${date.getMonth() + 1}-${date.getDate()}`));
-        console.log(new Date(`${year}-${date.getMonth() + 1}-${date.getDate()}`))
+
+        let yearDate = new Date(`${year}-${date.getMonth() + 1}-${date.getDate()}`);
+
+        const actualYearRuns = runs
+            .filter(run => run.date.includes(`${year}-`))
+            .filter(run => {
+            let runDate = new Date(run.date);
+            if (runDate < yearDate) return true
+            else return false
+        })
+
         let actualYearDistance = 0;
         let calculateGoalComplete = 0;
 
@@ -49,7 +60,7 @@ const GoalItem = ({goal, runs}) => {
     return (
         <div className="goalItem">
             <div className="goalItemThisYear">
-                <h3>Your {year} Pace</h3>
+                <h3>{year} runs to {date.getDate()} {monthName[date.getMonth()]}</h3>
                 <div className="goalStripe">
                     <div className="goalStripeOuter">
                         <p>{goal.amount} km</p>
@@ -58,19 +69,19 @@ const GoalItem = ({goal, runs}) => {
                 </div>
             </div>
             <div className="goalItemActual">
-                <h3>Goal {year} Pace</h3>
+                <h3>Goal {year} Pace (goal / percentage of the year elapsed)</h3>
                 <div className="goalStripe">
                     <div className="goalStripeOuter">
                         <div style={yearCompleteStyle} className="goalItemActualMarker goalMarker"><img src={runner} alt="runner_icon" /></div>
                     </div>
                 </div>
             </div>
-            <h3>Past years ghosts</h3>
+            <h3>Past years ghosts (see how you ran in previous years against this year's goal)</h3>
             <div>
                 {pastYearsDistance.map((year, index) => (
                     <div key={year.year}>
                         <div className="goalItem">
-                            <p>{year.year}: {`${year.distance}`} km</p>
+                            <p>{year.year} runs to {date.getDate()} {monthName[date.getMonth()]}: {`${year.distance}`} km</p>
                         </div>
                         <div className="goalStripe">
                             <div className="goalStripeOuter">

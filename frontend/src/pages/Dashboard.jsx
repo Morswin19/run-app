@@ -47,6 +47,7 @@ const Dashboard = () => {
                 </div>
             </section>
             <RunForm />
+            <h3>Your Runs</h3>
             <section className="content">
                 {runs.length > 0
                 ?

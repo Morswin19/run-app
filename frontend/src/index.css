@@ -253,7 +253,7 @@ h3 {
 }
 
 .deleteBtn:hover {
-  border-radius: 10px;
+  transform: scale(0.98);
 }
 
 .logo a {
@@ -266,6 +266,14 @@ h3 {
 
 .yearsDistance {
   margin-top: 20px
+}
+
+.noGoal {
+  padding-bottom: 40px
+}
+
+.active {
+  border-bottom: 1px solid black;
 }
 
 @media (max-width: 600px) {
