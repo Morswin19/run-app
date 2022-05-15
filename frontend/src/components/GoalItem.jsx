@@ -81,7 +81,7 @@ const GoalItem = ({goal, runs}) => {
                 {pastYearsDistance.map((year, index) => (
                     <div key={year.year}>
                         <div className="goalItem">
-                            <p>{year.year} runs to {date.getDate()} {monthName[date.getMonth()]}: {`${year.distance}`} km</p>
+                            <p>{year.year} runs to {date.getDate()} {monthName[date.getMonth()]}: {`${Math.round(year.distance)}`} km</p>
                         </div>
                         <div className="goalStripe">
                             <div className="goalStripeOuter">

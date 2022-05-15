@@ -20,8 +20,8 @@ const Distances = () => {
 
     return (
         <div className="distances">
-                    <p>Whole distance<br/>{runsDistance} km</p>
-                    <p>{year} distance<br/>{actualYearDistance} km</p>
+                    <p>Whole distance<br/>{Math.round(runsDistance)} km</p>
+                    <p>{year} distance<br/>{Math.round(actualYearDistance)} km</p>
                     <div>
                         {goals.map(goal => (
                             <div className="goalItem" key={goal._id}>

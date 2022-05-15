@@ -30,7 +30,7 @@ const YearsDistance = () => {
                 {yearsWithDistance.map(year => (
                     <div className="goal" key={year.year}>
                         <div>{year.year}</div>
-                        <h2>{year.distance}</h2>
+                        <h2>{Math.round(year.distance)}</h2>
                     </div>
                 ))}
             </div>

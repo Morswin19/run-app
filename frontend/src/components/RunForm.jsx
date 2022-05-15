@@ -21,7 +21,7 @@ const RunForm = () => {
             <form onSubmit={onSubmit}>
                 <div className="form-group">
                     <label htmlFor="length">Run</label>
-                    <input placeholder="run length" type="number" name='length' id="length" value={length} onChange={(e) => setLength(e.target.value)}/>
+                    <input placeholder="run length in km (ex. 5.83)" type="number" name='length' id="length" value={length} onChange={(e) => setLength(e.target.value)}/>
                 </div>
                 <div className="form-group">
                     <label htmlFor="date">Date</label>
