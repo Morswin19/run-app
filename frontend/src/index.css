@@ -153,6 +153,10 @@ h3 {
   transition: 0.2;
 }
 
+.content .btn {
+  margin: 10px auto 10px
+}
+
 .btn svg {
   margin-right: 8px;
 }
@@ -229,7 +233,27 @@ h3 {
   width: 20px;
   transform: translateY(-50%);
   top: 50%;
-  left: 100%
+  /* left: 100% */
+}
+
+.goalMarker span {
+  position: absolute;
+  color: white;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100px;
+  /* font-size: 24px; */
+  /* line-height: 24px */
+}
+
+.goalMarker span:first-child {
+  right: 15px;
+  text-align: right
+}
+
+.goalMarker span:last-child {
+  left: 50px;
+  text-align: left
 }
 
 .distances {
@@ -265,7 +289,8 @@ h3 {
 }
 
 .yearsDistance {
-  margin-top: 20px
+  margin-top: 20px;
+  padding-bottom: 40px
 }
 
 .noGoal {

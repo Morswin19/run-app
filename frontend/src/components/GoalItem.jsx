@@ -64,7 +64,11 @@ const GoalItem = ({goal, runs}) => {
                 <div className="goalStripe">
                     <div className="goalStripeOuter">
                         <p>{goal.amount} km</p>
-                        <div style={yearsWithDistance[0].leftStyle} className="goalItemThisYearMarker goalMarker"><img src={runner} alt="runner_icon" /></div>
+                        <div style={yearsWithDistance[0].leftStyle} className="goalItemThisYearMarker goalMarker">
+                            <span>{Math.round(yearsWithDistance[0].distance)} km &#10229;</span>
+                                <img src={runner} alt="runner_icon" />
+                            <span>&#10230; {goal.amount - Math.round(yearsWithDistance[0].distance)} km</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -72,7 +76,12 @@ const GoalItem = ({goal, runs}) => {
                 <h3>Goal {year} Pace (goal / percentage of the year elapsed)</h3>
                 <div className="goalStripe">
                     <div className="goalStripeOuter">
-                        <div style={yearCompleteStyle} className="goalItemActualMarker goalMarker"><img src={runner} alt="runner_icon" /></div>
+                        <p>{goal.amount} km</p>
+                        <div style={yearCompleteStyle} className="goalItemActualMarker goalMarker">
+                            <span>{Math.round(percentOfTheYearGone * goal.amount / 100)} km &#10229;</span>
+                                <img src={runner} alt="runner_icon" />
+                            <span>&#10230; {goal.amount - Math.round(percentOfTheYearGone * goal.amount / 100)} km</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -86,7 +95,11 @@ const GoalItem = ({goal, runs}) => {
                         <div className="goalStripe">
                             <div className="goalStripeOuter">
                                 <p>{goal.amount} km</p>
-                                <div style={year.leftStyle} className="goalItemActualMarker goalMarker"><img src={runner} alt="runner_icon" /></div>
+                                <div style={year.leftStyle} className="goalItemActualMarker goalMarker">
+                                    <span>{Math.round(year.distance)} km &#10229;</span>
+                                        <img src={runner} alt="runner_icon" />
+                                    <span>&#10230; {goal.amount - Math.round(year.distance)} km</span>
+                                </div>
                             </div>
                         </div>
                     </div>
