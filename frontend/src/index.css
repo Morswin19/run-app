@@ -206,6 +206,11 @@ h3 {
   }
 }
 
+.goalItem {
+  /* border: 2px solid darksalmon; */
+  overflow: hidden;
+}
+
 .goalStripe {
   margin: 30px 0 50px;
   position: relative;
@@ -227,6 +232,15 @@ h3 {
   position: relative
 }
 
+@media(max-width: 650px){
+  .goalStripeOuter{
+    width: calc(100% - 10px)
+  }
+  .goalStripeOuter p {
+    margin-right: 0;
+  }
+}
+
 .goalMarker {
   position: absolute;
   height: 60px;
@@ -242,6 +256,8 @@ h3 {
   top: 50%;
   transform: translateY(-50%);
   width: 100px;
+  background: black;
+  line-height: 14px;
   /* font-size: 24px; */
   /* line-height: 24px */
 }

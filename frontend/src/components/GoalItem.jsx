@@ -29,7 +29,7 @@ const GoalItem = ({goal, runs}) => {
     // calculate the distance of each year
     const yearsWithDistance = runYears.map((year) => {
 
-        let yearDate = new Date(`${year}-${date.getMonth() + 1}-${date.getDate()}`);
+        let yearDate = new Date(`${year}-${date.getMonth() + 1}-${date.getDate()} 23:59`);
 
         const actualYearRuns = runs
             .filter(run => run.date.includes(`${year}-`))
